@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div *ngIf="menu.length > 0">
+        <div class="row">
+            <div class="col-12 text-center mt-5 mx-auto">
+                <h2>Su menú es el siguiente:</h2>
+                <hr>
+            </div>
+        </div>
+        <app-recipe [recipes]="menu"></app-recipe>
+        <hr>
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="card h-100 w-100 shadow-lg border-0">
+                    <div class="card-body">
+                        <h5 class="card-title">Características: </h5>
+                        <hr>
+                        <p>Precio total: {{totalPrice | currency}}</p>
+                        <p>Tiempo promedio del menú: {{avgTime}}</p>
+                        <p>Promedio del Health Score: {{avgHealthScore | number : '1.2-2'}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="menu.length < 1">
+        <div class="row">
+            <div class="col-12 text-center mt-5">
+                <div class="card h-100 w-100 shadow-lg border-0">
+                    <div class="card-body p-5">
+                        <h5 class="card-title">No seleccionó ningún plato</h5>
+                        <hr>
+                        <p class="card-text">Comience a buscar platos para poder agregarlos a su menú.</p>
+                        <p>Presione el icono <i class="fas fa-search"></i> para comenzar a buscar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

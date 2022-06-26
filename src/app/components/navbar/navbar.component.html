@@ -1,0 +1,16 @@
+<nav class="navbar sticky-top navbar-expand-lg bg-red shadow-lg">
+    <div class="container">
+        <a class="navbar-brand text-decoration-none text-white ms-1" routerLink="/home"><i class="fas fa-home"></i></a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+        <div *ngIf="token" class="bg-transparent border-0 rounded p-2">
+            <button (click)="logout()" class="btn text-white"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+        <div *ngIf="!search" class="bg-transparent animate__animated animate__slideInLeft animate__faster border-0 rounded p-2">
+            <button (click)="showSearch()" class="btn text-white"><i class="fas fa-search"></i></button>
+        </div>
+        <div [class.d-none]="search == false" class="d-flex bg-white border-3 border-light rounded p-2">
+            <button (click)="search = !search" type="button" class="btn btn-disabled"><i class="fas fa-search"></i></button>
+            <input #searchInput class="form-control border-0 shadow-none bg-transparent" type="search" placeholder="Buscar plato...">
+        </div>
+    </div>
+</nav>

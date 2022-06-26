@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <div *ngIf="showLoader" class="row">
+        <div class="col mx-auto text-center mt-5">
+            <i class="fa-5x fas fa-spinner fa-spin"></i>
+        </div>
+    </div>
+    <div *ngIf="recipes.length > 0 && !showLoader" class="row">
+        <div class="col">
+            <h1 class="mt-5">Resultados de: <small class="text-capitalize"> {{ query }} </small></h1>
+            <hr>
+            <app-recipe [recipes]="recipes"></app-recipe>
+        </div>
+    </div>
+    <div *ngIf="recipes.length < 1 && !showLoader" class="row">
+        <div class="col-12 text-center mt-5">
+            <div class="card h-100 w-100 shadow-lg border-0">
+                <div class="card-body p-5">
+                    <h5 class="card-title">No se encontraron platos</h5>
+                    <hr>
+                    <p>Presione el icono <i class="fas fa-search"></i> para realizar otra búsqueda.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

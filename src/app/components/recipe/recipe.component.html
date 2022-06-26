@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-12 col-12 mb-3 text-center" *ngFor="let recipe of recipes">
+        <div class="card h-100 w-100 shadow-lg border-0">
+            <img src="{{recipe.image}}" class="img-fluid shadow" alt="{{recipe.title}}">
+            <div class="card-body">
+                <h3 class="card-title">{{recipe.title}}</h3>
+                <hr>
+                <ul class="recipe-details">
+                    <li class="recipe-details-item">
+                        <div *ngIf="recipe.vegan">
+                            <span class="value fw-bolder"><i class="fas fa-check-circle"></i></span>
+                        </div>
+                        <div *ngIf="!recipe.vegan">
+                            <span class="value fw-bolder"><i class="fas fa-times-circle"></i></span>
+                        </div>
+                        <span class="title fw-light">Vegano</span>
+                    </li>
+                    <li class="recipe-details-item">
+                        <span class="value fw-bolder">{{recipe.servings}}</span>
+                        <span class="title fw-light">Porciones</span>
+                    </li>
+                    <li class="recipe-details-item">
+                        <div *ngIf="recipe.vegetarian">
+                            <span class="value fw-bolder"><i class="fas fa-check-circle"></i></span>
+                        </div>
+                        <div *ngIf="!recipe.vegetarian">
+                            <span class="value fw-bolder"><i class="fas fa-times-circle"></i></span>
+                        </div>
+                        <span class="title fw-light">Vegetariano</span>
+                    </li>
+                </ul>
+                <div class="text-center">
+                    <button (click)="onRecipeClick(recipe)" class="btn btn-secondary btn-circle btn-xl me-3 shadow" type="button"><i class="fas fa-info-circle"></i></button>
+                    <button *ngIf="!existInMenu(recipe)" (click)="addToMenu(recipe)" class="btn btn-red btn-circle btn-xl me-3 shadow" type="button"><i class="fas fa-plus-circle"></i></button>
+                    <button *ngIf="existInMenu(recipe)" (click)="removeFromMenu(recipe)" class="btn btn-red btn-circle btn-xl shadow" type="button"><i class="fas fa-minus-circle"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
